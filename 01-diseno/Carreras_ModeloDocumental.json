@@ -1,0 +1,52 @@
+{
+    "carreras": [
+        {
+            "carrera_id": 1,
+            "nombre": "test",
+            "tipo_carrera_id": "maraton",
+            "fecha": "02/02/2025",
+            "tiempo": "00:00:00",
+            "altitud": "1500",
+            "lugar": "Chile",
+            "pais_id": 5,
+            "foto": "img/image1.jpg"
+        },
+        {
+            "carrera_id": 2,
+            "nombre": "test",
+            "tipo_carrera_id": "maraton",
+            "fecha": "02/02/2025",
+            "tiempo": "00:00:00",
+            "altitud": "1500",
+            "lugar": "Chile",
+            "pais_id": 5,
+            "foto": "img/image1.jpg"
+        },
+        {
+            "carrera_id": 3,
+            "nombre": "test",
+            "tipo_carrera_id": "maraton",
+            "fecha": "02/02/2025",
+            "tiempo": "00:00:00",
+            "mejor_tiempo": true,
+            "altitud": "1500",
+            "lugar": "Chile",
+            "pais_id": 3,
+            "foto": "img/image1.jpg"
+        }
+    ],
+    "pais": [
+        {
+            "pais_id": "1",
+            "nombre": "Colombia"
+        },
+        {
+            "pais_id": "2",
+            "nombre": "Peru"
+        },
+        {
+            "pais_id": "3",
+            "nombre": "Chile"
+        }
+    ]
+}
