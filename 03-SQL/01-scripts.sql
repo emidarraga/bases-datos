@@ -82,8 +82,14 @@ INSERT INTO usuarios(nombres, apellidos, correo, edad) VALUES
 ('sasuke','uchiha', 'sasuke@hotmail.com', 24),
 ('sakura', 'haruno', 'sakuharuno@gmail.com', 25);
 
+
 -- LEER
 SELECT * FROM usuarios;
+SELECT nombres, edad FROM usuarios;
+SELECT COUNT(*) AS total_usuarios FROM usuarios; -- Alias
+SELECT * FROM usuarios WHERE nombres = 'naruto'; -- Clausula where
+SELECT * FROM usuarios WHERE usuario_id IN (1,2); -- Por un grupo de valores
+SELECT * FROM usuarios WHERE nombres LIKE 's%';
 
 -- Actualizar
 UPDATE usuarios SET direccion = 'Aldea de la hoja #15-78' WHERE usuario_id = 1;
@@ -91,4 +97,6 @@ UPDATE usuarios SET direccion = 'Aldea del sonido #96-25' WHERE usuario_id = 2;
 
 -- Eliminar
 DELETE FROM usuarios WHERE usuario_id = 4;
+
+
 
