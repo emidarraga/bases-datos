@@ -36,7 +36,7 @@ DROP USER 'esteban'@'localhost';
 
 
 -- ########################################################################
-USE curso_sql;
+USE curso_sql; -- Selecciono la DB en la que voy a trabajar
 SHOW TABLES;
 
 -- TABLAS
@@ -86,17 +86,52 @@ INSERT INTO usuarios(nombres, apellidos, correo, edad) VALUES
 -- LEER
 SELECT * FROM usuarios;
 SELECT nombres, edad FROM usuarios;
-SELECT COUNT(*) AS total_usuarios FROM usuarios; -- Alias
+
+SELECT COUNT(*) AS total_usuarios FROM usuarios; -- Alias(Nombre del campo resultado)
 SELECT * FROM usuarios WHERE nombres = 'naruto'; -- Clausula where
 SELECT * FROM usuarios WHERE usuario_id IN (1,2); -- Por un grupo de valores
-SELECT * FROM usuarios WHERE nombres LIKE 's%';
+
+-- Operador LIKE
+SELECT * FROM usuarios WHERE nombres LIKE 's%'; -- Que inicie con algo especifico
+SELECT * FROM usuarios WHERE correo LIKE '%@gmail.com'; -- Que termine con algo especifico
+SELECT * FROM usuarios WHERE email LIKE '%a%'; -- Que en cualquier parte tenga
+
+-- Operador NOT LIKE
+SELECT * FROM usuarios WHERE nombres NOT LIKE 's%'; 
+SELECT * FROM usuarios WHERE correo NOT LIKE '%@gmail.com'; 
+SELECT * FROM usuarios WHERE email NOT LIKE '%a%';
 
 -- Actualizar
 UPDATE usuarios SET direccion = 'Aldea de la hoja #15-78' WHERE usuario_id = 1;
 UPDATE usuarios SET direccion = 'Aldea del sonido #96-25' WHERE usuario_id = 2;
 
+UPDATE usuarios SET direccion = 'Aldea de la hoja #36-98' WHERE usuario_id = 3;
+UPDATE usuarios SET direccion = 'Aldea de la hoja #66-121', edad = 23 WHERE usuario_id = 13;
+
 -- Eliminar
 DELETE FROM usuarios WHERE usuario_id = 4;
 
 
+-- Operadores relacionales
+/*
+>
+<
+>=
+<=
+<> / !=
+*/
+SELECT * FROM usuarios WHERE edad >= 25;
+SELECT * FROM usuarios WHERE edad < 25;
+SELECT * FROM usuarios WHERE nombres != 'sasuke';
 
+
+
+-- Operadores Logicos
+-- AND OR NOT
+SELECT * FROM usuarios WHERE NOT direccion = 'SIN DIRECCION';
+SELECT * FROM usuarios WHERE nombres = 'naruto' AND apellidos = 'usumaki';
+SELECT * FROM usuarios WHERE nombres = 'sasuke' OR edad > 20;
+
+-- Eliminar y reiniciar todos los registros de una tabla
+-- El TRUNCATE tambien elimina el cache del auto_increment del id - Empiza a contar de nuevo desde 1
+TRUNCATE TABLE usuarios;
