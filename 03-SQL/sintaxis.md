@@ -93,3 +93,56 @@ CREATE TABLE usuarios(
     CONSTRAINT pk_usuario PRIMARY KEY(usuario_id)
 );
 ```
+
+## Indices
+
+Un índice es una estructura de datos que la base de datos usa para buscar información rápidamente, sin tener que recorrer toda la tabla
+
+Hay 3 prinicpales tipos de indices:
+
+1. Llaves primarias
+1. Campos unicos
+1. Indices que yo pueda crear
+
+```sql
+-- ver los indices de una tabla
+SHOW INDEX FROM usuarios;
+```
+
+Agregando un indice al crear la tabla:
+
+```sql
+CREATE TABLE caballeros (
+  caballero_id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  nombre VARCHAR(30),
+  armadura VARCHAR(30) UNIQUE,
+  rango VARCHAR(30),
+  signo VARCHAR(30),
+  ejercito VARCHAR(30),
+  pais VARCHAR(30),
+  INDEX i_rango (rango), # Por convencion debe iniciar con i_ seguido del campo al que hace referencia
+  INDEX i_signo (signo)
+);
+
+```
+
+Definiendo un indice de varios campos:
+
+```sql
+INDEX i_caballeros (ejercito, pais)
+```
+
+Indice de tipo full text consume mas recursos:
+
+```sql
+CREATE TABLE caballeros (
+  caballero_id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  nombre VARCHAR(30),
+  armadura VARCHAR(30),
+  rango VARCHAR(30),
+  signo VARCHAR(30),
+  ejercito VARCHAR(30),
+  pais VARCHAR(30),
+  FULLTEXT INDEX fi_search(armadura, rango, signo, ejercito, pais)
+);
+```
