@@ -13,55 +13,55 @@
 
 ### Rangos **EC**
 - rango_id **( PK )**
-- nombre
+- rango
 - descripcion
 
 ### Aldeas **EC**
 - aldea_id **( PK )**
-- pais_id **( FK )**
-- nombre
+- aldea
 - estado
+- pais_id **( FK )**
 
 ### Paises **EC**
 - pais_id **( PK )**
-- nombre
+- pais
 
 ### Armas **ED**
 - arma_id **( PK )**
-- nombre
+- arma
 - tipo
 - descripcion
 
 ### Bijus **EC**
 - biju_id **( PK )**
-- nombre
+- biju
 - naturaleza_chakra_id **( FK )**
 
 ### kkekeigenkais **ED**
 - kkekeigenkai_id **( PK )**
-- nombre
+- kkekeigenkai
 - estado
 - clan_id **( FK )**
 
 ### Clanes **ED**
 - clan_id **( PK )**
-- aldea_id **( FK )**
-- nombre
+- clan
 - estado
+- aldea_id **( FK )**
 
 ### narutaleza_charkras **EC**
 - narutaleza_charkra_id **( PK )**
-- nombre
+- naturaleza
 - descripcion
 
 ### Jutsus **ED**
 - jutsu_id **( PK )**
-- nombre
+- justu
 - descripcion
 
 ### Elementos **ED**
 - elemento_id **( PK )**
-- nombre
+- elemento
 - descripcion
 
 ## Relaciones

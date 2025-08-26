@@ -1,7 +1,7 @@
 USE curso_sql;
 
 CREATE TABLE usuarios(
-	usuario_id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+	  usuario_id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     nombres VARCHAR(30) NOT NULL,
     apellidos VARCHAR(30) NOT NULL,
     correo VARCHAR(50) UNIQUE,
@@ -36,7 +36,7 @@ SELECT * FROM productos;
 
 # Funciones matematicas
 -- Operaciones aritmeticas
-# suma +  resta -  multiplicacion *  divicion /  modulo % / MOD(4,2)
+# suma(+)  resta(-) multiplicacion(*)  divicion(/)  modulo(%) MOD(4,2)
 
 
 SELECT 4 % 2;
@@ -155,6 +155,8 @@ SELECT CONCAT_WS('-','hola','mundo','desde','SQL');
 
 # ---------------------------------------------
 # Indices
+# Los indices son  una estructura que se crea en una o mas columnas  de una tabla para acelerar las consultas
+# Demaciados indices pueden afectar el rendmiento
 
 -- Ver los indices de una tabla
 SHOW INDEX FROM caballeros;

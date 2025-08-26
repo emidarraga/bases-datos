@@ -5,17 +5,17 @@ CREATE DATABASE IF NOT EXISTS curso_sql;
 DROP DATABASE curso_sql;	
 DROP DATABASE IF EXISTS curso_sql;
 
--- Crear un usuario en el sistema [esto desde el usuario root]
+-- Crear un usuario en el sistema [esto desde el usuario root] o un usuario con permisos de creacion
 CREATE USER 'esteban'@'localhost' IDENTIFIED BY 'qwerty'; -- Password
 
--- Ver todos lo usuarios del sistema
+-- Ver todos lo usuarios del sistema [desde el usuario root]
 SELECT * FROM mysql.user;
 
 -- Asignando privelegios a un usuario
+-- El asterisco representa las tablas curso_sql.* -> Todas las tablas de la DB
 -- Permisos especificos
 GRANT INSERT, UPDATE, DELETE ON curso_sql.* TO 'esteban'@'localhost'; 
 
--- El asterisco representa las tablas
 -- Todos los permisos
 GRANT ALL PRIVILEGES ON curso_sql.* TO 'esteban'@'localhost';
 
@@ -23,9 +23,11 @@ GRANT ALL PRIVILEGES ON curso_sql.* TO 'esteban'@'localhost';
 FLUSH PRIVILEGES;
 
 
--- Ver los permisos o privilegios de un usuario
+-- Ver los permisos o privilegios de un usuario especifico
 SHOW GRANTS FOR 'esteban'@'localhost'; 
 
+-- Ver que permisos tengo como usuario
+SHOW GRANTS;
 
 -- Eliminar permisos
 REVOKE ALL, GRANT OPTION FROM 'esteban'@'localhost';
@@ -120,10 +122,10 @@ DELETE FROM usuarios WHERE usuario_id = 4;
 <=
 <> / !=
 */
+
 SELECT * FROM usuarios WHERE edad >= 25;
 SELECT * FROM usuarios WHERE edad < 25;
 SELECT * FROM usuarios WHERE nombres != 'sasuke';
-
 
 
 -- Operadores Logicos
