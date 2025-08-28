@@ -1,0 +1,37 @@
+{
+    "dbname": "personal_library",
+    "entities": [
+        {
+            "libros": [
+                {
+                    "libro_id": 1,
+                    "titulo": "La guerra de los mundos",
+                    "publicacion": 1920,
+                    "numero_paginas": 200,
+                    "portada": "https://libros.com/img.png",
+                    "leido": 1,
+                    "editorial": [
+                        {
+                            "editorial_id": "",
+                            "editorial": ""
+                        }
+                    ]
+                }
+            ],
+            "editoriales": [
+                {
+                    "editorial_id": "",
+                    "editorial": ""
+                }
+            ],
+            "autores": [
+                {
+                    "autor_id": "",
+                    "nombres": "",
+                    "apellidos": "",
+                    "pais": ""
+                }
+            ]
+        }
+    ]
+}

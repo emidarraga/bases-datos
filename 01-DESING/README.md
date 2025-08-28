@@ -76,7 +76,11 @@ Es el proceso de representar la informacion y sus relacioenes antes de ser imple
 
 ### Modelo Conceptual (MER)
 * Modelo entidad relacion
+* Descripcion conceptual de las entidades, atributos y relaciones
 * Es la parte mas abstracta: se definen las entidades, atributos y relaciones sin pensar todavia en motor de bases de datos
+
+#### Diagrama Entidad Relacion
+El DER es cuando grafico o dibujo apartir del modelo conceptual MER las entidades, atributos y relaciones 
 
 ### Modelo Logico (MR)
 * Aqui se transforma el MER en un modelo relacional
