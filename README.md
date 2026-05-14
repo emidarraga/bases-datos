@@ -119,7 +119,7 @@ Es el proceso de representar la informacion y sus relacioenes antes de ser imple
 * Es la parte mas abstracta: se definen las entidades, atributos y relaciones sin pensar todavia en motor de bases de datos
 
 #### Diagrama Entidad Relacion
-Cuando lo represento visualmete
+Cuando represento visualmete al MER
 El DER es cuando grafico o dibujo apartir del modelo conceptual MER las entidades, atributos y relaciones 
 
 ### Modelo Logico (MR)
