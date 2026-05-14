@@ -1,92 +1,77 @@
 # Diseño de Bases de Datos
-**¿Que es una Base de Datos?**
 
-Una base de datos es un conjunto organizadado de infomracion o datos que se almancenan y gestionan de forma estructurada en un sistema. Su objetivo es acceder, conultar, modificar y administrar esa informacion de manera eficiente
+1. Modelo conceptual - MER Modelo entidad relacion y DER Diagrama Entidad Relacion
+2. Modelo Logico - MR Modelo relacional
+3. Corrida de datos - Data Run
+4. Modelo Fisico - Scripts en el SGBD
+   
+## Pasos a seguir:
 
+1. Identificar las entidades del sistema.
 
-## Bases de datos relacionales
-Es un tipo de base de datos que organiza la informacion en tablas, donde cada tabla esta compuesta por columna(atributos) y filas(registros) estos pueden o no hacer referencia a otro campo de otra tabla.
+2. Identificar los atributos de las entidades.
 
+3. Identificar las llaves primarias y foráneas.
 
-## Entidades
-Es la representacion de un objeto del mundo real
+4. Asignar una nomenclatura adeacuada a las entidades y sus atributos.
 
+5. Identificar las entidades pivote del sistema.
 
-### Tipos de entidades
-* Entidades de datos
-* Entidades Catalogo
-* Entidades Pivote / Asociacion / Enlace
+6. Identificar los catálogos del sistema.
 
+7. Identificar los tipos de relaciones del sistema.
 
-## Reglas de negocio
-Son normas que determinan como deben manejarse los datos y aseguran que el sistema respete la logica del mundo real. No son reglas tecnicas sino reglas funcionales que definen lo que es valido o no en un modelo de datos.
+8. Crear el Modelo Entidad-Relación del sistema.
 
-**Ejemplo: DB para una tienda en linea**
-* Un cliente no puede hacer un pedido sino tiene una direccion registrada
-* No se puede vender un producto si no hay suficiente inventario disponible
-* El campo "correo electronico" de ser unico para cada usuario
+9. Crear el Modelo Relacional de la base de datos del sistema.
 
-**Se pueden aplicar en varios niveles:**
+10. Identificar los tipos de dato de los atributos de las entidades el sistema.
 
-* Bases de datos:
-    * Restricciones(check, unique, foreign key)
+11. Identificar los atributos que puedan ser únicos en el sistema.
 
-* Aplicacion:
-    * Validacion en el codigo antes de enviar datos a la base de datos
-
-* Interfaz de usuario
-    * Formularios que no permitan dejar campos vacios, o que filtran opciones
-
-**Son importantes por:**
-* Mantienen la integridad de los datos
-* Evitan errores logicos y problemas en los procesos de negocio
-* Ayudan a que la base de datos refleje correctamente el modelo real del sistema
-
-### Logica de Negocio
-Conjunto de reglas, politicas y procedimientos que definen como se usan y manipulan los datos para cumplir con los objetivos de una aplicacion o sistema
-
-* Reglas de validacion
-* Restricciones
-* Procedimientos de almacenado y triggers
+12. Identificar las reglas de negocio (Operaciones CRUD) del sistema.
 
 
-## Normalizacion
+Habitualmente los nombres de las entidades van en plural y el de los atributos en singular
 
-### 1FN Primera forma normal
-Cada atributo de una entidad debe contener un solo valor atomico, es decir los valores deben ser indivisibles no puden ser divididos en atributos mas pequeños
+## Glosario
 
-
-### 2FN Segunda forma normal
-Ademas de cumplir la primer forma normal, cada atributo no dependiente funcionalemente de la llave principal debe estar en una entidad separada
-
-
-### 3FN Tercer forma normal
-Ademas de cumplir la primer y segunda forma normal, Todas las dependencias funcionales deben ser eliminadas, es decir no debe de existir dependencias funcionales transitorias
+* **PK**: _Primary Key_
+* **FK**: _Foreign Key_
+* **UQ**: _Unique Attribute_
+* **ED**: _Entidada de datos_
+* **EC**: _Entidada Catalogo_
+* **EP**: _Entidada pivote_
 
 
-### 4FN Cuarta forma normal - Boyce Codd
-Requiere que cada dependencia funcional sea una clave candidata unica
 
 
-### 5FN Quinta forma normal - Dominio - Clave
-Se garantiza que no haya dependencias multiples de conjuntos de entidades
+Biblioteca
+Sistema para organizar sus prestamos de libros
 
-## Modelado
-Es el proceso de representar la informacion y sus relacioenes antes de ser implementada en en SGBD
+Libros **ED**
+- libro_id INT PRIMARY_KEY NOT NULL AUTO_INCREMENT UNSIGNED
+- titulo VARCHAR(20) NOT NULL
+- autor VARCHAR(20) NOT NULL
+- anio_publicacion INT NOT NULL UNSIGNED
+- catidad_disponible INT NOT NULL UNSIGNED
 
-### Modelo Conceptual (MER)
-* Modelo entidad relacion
-* Descripcion conceptual de las entidades, atributos y relaciones
-* Es la parte mas abstracta: se definen las entidades, atributos y relaciones sin pensar todavia en motor de bases de datos
 
-#### Diagrama Entidad Relacion
-El DER es cuando grafico o dibujo apartir del modelo conceptual MER las entidades, atributos y relaciones 
+Usuarios **ED**
+- usurio_id INT PRIMARY_KEY NOT NULL AUTO_INCREMENT
+- nombre VARCHAR(20)
+- apellido VARCHAR(20)
+- correo VARCHAR(20) UNIQUE
+- fecha_registro DATE
 
-### Modelo Logico (MR)
-* Aqui se transforma el MER en un modelo relacional
-* Se pasan las entidades y relaciones a tablas, columnas, llaves primarias y foraneas
-* Aqui ya aparecen las dependencias funcionales y la normalizacion
+Prestamos **EP**
+- usuario_id INT FOREIGN_KEY NOT NULL UNSIGNED
+- libro_id INT FOREIGN_KEY NOT NULL UNSIGNED
+- fecha_prestamo DATE
+- fecha_devolucion DATE
 
-### Modelo Fisico
-* Es el diseño ya pensado para un SGBD especifico(MySQL, PostreSQL, SQL Server ...)
-* Se crean los scripts que crean las tablas
+Relaciones:
+
+- Un libro puede estar prestado a muchos usuarios
+- Un usuario pude tener prestados muchos libros
+

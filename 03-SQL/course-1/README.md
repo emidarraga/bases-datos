@@ -44,7 +44,7 @@ Buenas Practicas:
 
 * Comandos y palabras reservadas de SQL van en MAYUSCULAS
 * Nombres de objetos y datos van en minusculas con snake_case
-* Para stings usar comillas simples
+* Para strings usar comillas simples
 * Siempre poner el (;) al final de una sentencia
 
 ## Sentencias
@@ -89,7 +89,7 @@ DROP USER 'esteban'@'localhost';
 
 ```sql
 CREATE TABLE usuarios(
-	usuario_id INT UNSIGNED AUTO_INCREMENT primary KEY,
+	  usuario_id INT UNSIGNED AUTO_INCREMENT primary KEY,
     nombre VARCHAR(50) NOT NULL,
     correo VARCHAR(50) NOT NULL
 );
@@ -104,7 +104,7 @@ Formas de declarar un campo como `PRIMARY KEY`:
 
 ```sql
 CREATE TABLE usuarios(
-	usuario_id INT NOT NULL AUTO_INCREMENT primary KEY,
+	  usuario_id INT NOT NULL AUTO_INCREMENT primary KEY,
     nombre VARCHAR(50) NOT NULL,
     correo VARCHAR(50) NOT NULL
 );
@@ -114,7 +114,7 @@ CREATE TABLE usuarios(
 
 ```sql
 CREATE TABLE usuarios(
-	usuario_id INT UNSIGNED AUTO_INCREMENT,
+	  usuario_id INT UNSIGNED AUTO_INCREMENT,
     nombres VARCHAR(50) NOT NULL,
     apellidos VARCHAR(50) NOT NULL,
     CONSTRAINT pk_usuario PRIMARY KEY(usuario_id)
@@ -122,7 +122,7 @@ CREATE TABLE usuarios(
 ```
 
 ## Indices
-
+****
 Un índice es una estructura de datos que la base de datos usa para buscar información rápidamente, sin tener que recorrer toda la tabla
 
 Hay 3 prinicpales tipos de indices:

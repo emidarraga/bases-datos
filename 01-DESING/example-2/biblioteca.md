@@ -17,10 +17,6 @@
 - apellidos
 - pais_id **FK**
 
-### autores_paises
-- autor_id **PK** **FK**
-- pais_id **PK** **FK**
-
 ### libros_autores **EP**
 - libro_id **PK** **FK**
 - autor_id **PK** **FK**
@@ -44,7 +40,7 @@
 ## Relaciones
 * uno o muchos libros fueros escritor por uno o muchos autores
 * un libro tiene uno o muchos generos
-* un libro pertenece a una o muchas editoriale
+* un libro pertenece a una o muchas editoriales
 * un autor pertence a un pais
 
 ### Reglas de negocio
@@ -53,10 +49,10 @@
 - Un libro debe tener minimo un genero
 - El campo leido debe ser 0 o 1
 - Todo libro debe tener un titulo
-- El numero de paginas debe ser mayor a 0
+- El numero de paginas de un libro debe ser mayor a 0
 
 #### autores
-- el autor debe pertinecer a un pais valido
+- el autor debe pertenecer a un pais valido
 
 #### libros_autores
 - Un libro de tener al menos un autor
@@ -67,11 +63,11 @@
 - Los generos no pueden estar repetidos deben ser unicos
 
 #### libros_generos
-- Un libro debe al menos un genero  
+- Un libro debe tener al menos un genero  
 
 #### editoriales
 - Cada editorial debe ser unica
 
 ### paises
-- Los pasise deben ser unicos
+- Los pasises deben ser unicos
 - Todo pais debe tener un codigo de 3 letras
