@@ -38,7 +38,8 @@ DROP USER 'esteban'@'localhost';
 
 
 -- ########################################################################
-USE curso_sql; -- Selecciono la DB en la que voy a trabajar
+-- Selecciono la DB en la que voy a trabajar
+USE curso_sql; 
 SHOW TABLES;
 
 -- TABLAS
@@ -59,15 +60,18 @@ ALTER TABLE usuarios ADD COLUMN cumpleanios varchar(15);
 
 -- Modificando un campo
 ALTER TABLE usuarios MODIFY COLUMN cumpleanios DATE NOT NULL;
-ALTER TABLE usuarios RENAME COLUMN cumpleanios TO nacimiento; -- Cambio el nombre del campo
+
+-- Cambio el nombre del campo
+ALTER TABLE usuarios RENAME COLUMN cumpleanios TO nacimiento; 
 
 -- Eliminar una column
 ALTER TABLE usuarios DROP COLUMN nacimiento;
 
-
 -- Eliminar una tabla
 DROP TABLE usuarios;
 
+
+-- Creacion de una tabla
 CREATE TABLE usuarios(
 	usuario_id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     nombres VARCHAR(50) NOT NULL,
@@ -76,6 +80,32 @@ CREATE TABLE usuarios(
     direccion VARCHAR(100) DEFAULT "SIN DIRECCION",
     edad INT DEFAULT 0
 );
+
+-- FORMAS DE CREAR LA PK
+-- Usando CONSTRAINT
+CREATE TABLE usuarios(
+	usuario_id INT AUTO_INCREMENT UNSIGNED,
+	nombre varchar(30) NOT NULL,
+	apellido varchar(30),
+	CONSTRAINT pk_usuario_id PRIMARY key(usuario_id)
+);
+
+-- LA MAS CORRECTA
+CREATE TABLE usuarios(
+	usuario_id INT AUTO_INCREMENT UNSIGNED,
+	nombre varchar(30) NOT NULL,
+	apellido varchar(30),
+	PRIMARY kEY(usuario_id)
+);
+
+-- para hacerlo de forma rapida
+CREATE TABLE usuarios(
+	usuario_id INT AUTO_INCREMENT UNSIGNED PRIMARY KEY ,
+	nombre varchar(30) NOT NULL,
+	apellido varchar(30)
+);
+
+
 
 -- CURD
 -- Crear
@@ -92,6 +122,7 @@ SELECT nombres, edad FROM usuarios;
 SELECT COUNT(*) AS total_usuarios FROM usuarios; -- Alias(Nombre del campo resultado)
 SELECT * FROM usuarios WHERE nombres = 'naruto'; -- Clausula where
 SELECT * FROM usuarios WHERE usuario_id IN (1,2); -- Por un grupo de valores
+SELECT * FROM usuarios WHERE nombre in('sara','sakura'); -- Por un grupo de valores
 
 -- Operador LIKE
 SELECT * FROM usuarios WHERE nombres LIKE 's%'; -- Que inicie con algo especifico

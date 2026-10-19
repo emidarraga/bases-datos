@@ -137,11 +137,12 @@ El DER es cuando grafico o dibujo apartir del modelo conceptual MER las entidade
 Es un software especializado que sirve para crear, administrar y manipular base de datos de manera eficiente y segura.
 
 * Las base de datos se encuentran en el nivel mas bajo dentro de un entorno de sistemas de bases de datos
-* Generalmente se los considera como la parte fisica ya que, aunque sean un contenido logico, se encuentran almacenadas y creadas en un dispositivo fisico. Por ejemplo: Un servidor
+* Generalmente se los considera como la parte fisica ya que, aunque sean un contenido logico, se encuentran almacenadas y creadas en un dispositivo fisico. Por ejemplo: Un servidor, disco duro
+
+![DBMS](./00-assets/DBMS.JPG)
 
 Para que un usuario pueda acceder a los datos de en una base de datos, se necesita un software especial concido como SGBD (Sitema Gestor de Bases de Datos) o en ingles DBMS (Data Base Managment System)
 
-![DBMS](./00-assets/DBMS.JPG)
 
 SGBD mas conocidos:
 * MySQL
@@ -149,12 +150,12 @@ SGBD mas conocidos:
 * PostreSQL - PS
 * SQL Server
 
-No relacionales:
+No relacionales NoSQL(Not Only SQL):
 * MongoDB
 * Cassandra
 * Elastic Search
 
-# Tipos de datos
+## Tipos de datos
 Tipos de datos mas usados:
 
 - VARCHAR -> Cadena de texto variable, con una longitud maxima especificada

@@ -1,31 +1,40 @@
 # SQL Strutctured Query Lenguaje
 
-Es un estandar, es un lenguaje para trabajar con bases de datos relacionales.
+Es un estandar, es un lenguaje para trabajar con bases de datos relacionales. Cada SGBD usa su propia implementacion del lenguaje.
+
+## Conceptos basicos
+* Una base de datos tiene tablas
+* Una tabla tiene campos(columnas) y registros(filas)
+* El conjunto de campos genera un registro
+* **Campo:** Un dato que por si solo no dice much
+* **Registro:** Conjunto de campos que genera informacion
 
 ## Tipos de sentencias
 
-Data Definition Lenguaje DDL
+Representan las distintas operaciones o acciones que puedes realizar sobre una base de datos. Las sentencias SQL se clasifican en categorias segun el tipo de operacion que realizan dentro de una base datos
+
+Data Definition Lenguaje - DDL
 * CREATE
 * ALTER
 * DROP
 * TRUNCATE
 
-Data Manipulation Lenguaje
+Data Manipulation Lenguaje - DML
 * SELECT
 * INSERT
 * UPDATE
 * DELETE
 
-Data Control Lenguaje - Permisos en la DB
+Data Control Lenguaje - DCL -> (Permisos a un usuario en la DB)
 * GRANT
 * REVOKE
 
-Transacion Control Lenguaje
+Transacion Control Lenguaje - TCL
 * COMMIT
 * ROLLBACK
 * SET TRANSACTION
 
-# Sintaxis SQL
+## Sintaxis SQL
 
 Comentarios: 
 
@@ -33,11 +42,10 @@ Comentarios:
 -- Este es un comentario de una linea
 
 /*
-Es es un comentario
-de varias
-lineas
+* Es es un comentario
+* de varias
+* lineas en SQL
 */
-
 ```
 
 Buenas Practicas:
@@ -59,13 +67,19 @@ Buenas Practicas:
 
 ```SQL
 -- Crear un usuario en el sistema [esto desde el usuario root]
+-- USE mysql;
 CREATE USER 'esteban'@'localhost' IDENTIFIED BY 'qwerty';
 
 -- Ver todos lo usuarios
 SELECT * FROM mysql.user;
 
 -- Asignando privelegios a un usuario
--- El asterisco representa las tablas
+-- El asterisco representa las tablas curso_sql.* -> Todas las tablas de la DB
+
+-- Permisos especificos
+GRANT INSERT, UPDATE, DELETE ON curso_sql.* TO 'esteban'@'localhost'; 
+
+-- Todos los permisos sobre una DB
 GRANT ALL PRIVILEGES ON curso_sql.* TO 'esteban'@'localhost';
 
 -- Para acutalizar los persmisos o la lista de privilegios
@@ -75,17 +89,23 @@ FLUSH PRIVILEGES;
 -- Ver los permisos o privilegios de un usuario
 SHOW GRANTS FOR 'esteban'@'localhost'; 
 
-
 -- Eliminar permisos
 REVOKE ALL, GRANT OPTION FROM 'esteban'@'localhost';
 
 -- Eliminar usuario
+/*
+* Se usa un DROP porque un usuario no es un resgistro
+* es un objeto del sistema de bases de datos
+*/
 DROP USER 'esteban'@'localhost';
-
 ```
 
 
 ## Creacion de tablas
+Antes de trabajar con una base de datos debemos seleccionar con que base de datos se va a trabajar.
+
+`USE curso_sql;`
+
 
 ```sql
 CREATE TABLE usuarios(
@@ -100,11 +120,23 @@ UNSIGNED significa que no tenga simobolos + / -
 
 Formas de declarar un campo como `PRIMARY KEY`:
 
+
+* Luego de declarar el campo
+
+```SQL
+CREATE TABLE usuarios(
+	usuario_id INT UNSIGNED AUTO_INCREMENT,
+	nombre varchar(30) NOT NULL,
+	apellido varchar(30) NOT NULL,
+	correo varchar(50) UNIQUE,
+	PRIMARY key(usuario_id) -- ******
+);
+```
 * Directamente al crear el campo
 
 ```sql
 CREATE TABLE usuarios(
-	  usuario_id INT NOT NULL AUTO_INCREMENT primary KEY,
+	  usuario_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(50) NOT NULL,
     correo VARCHAR(50) NOT NULL
 );
@@ -120,6 +152,21 @@ CREATE TABLE usuarios(
     CONSTRAINT pk_usuario PRIMARY KEY(usuario_id)
 );
 ```
+## Valores por defecto
+Uso de default:
+
+```SQL
+CREATE TABLE usuarios(
+	usuario_id INT UNSIGNED AUTO_INCREMENT,
+	nombre varchar(30) NOT NULL,
+	apellido varchar(30) NOT NULL,
+	correo varchar(50) UNIQUE,
+	direccion varchar(100) DEFAULT "sin direccion",
+	edad int DEFAULT 0
+	PRIMARY key(usuario_id)
+);
+```
+
 
 ## Indices
 ****

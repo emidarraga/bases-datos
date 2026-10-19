@@ -62,7 +62,7 @@ SELECT nombre, precio, cantidad, (precio * cantidad) as ganancia FROM productos;
 
 
 
-# Funciones de agregado
+-- Funciones de agregado
 SELECT MAX(PRECIO) AS precio_maximo FROM productos;
 SELECT MIN(PRECIO) AS precio_minimo FROM productos;
 
@@ -99,7 +99,7 @@ INSERT INTO caballeros VALUES
 SELECT * FROM caballeros;
 
 
-# Practica GROUP BY
+-- Practica GROUP BY
 SELECT signo, COUNT(*) AS veces FROM caballeros GROUP BY signo;
 SELECT pais, COUNT(*) AS veces FROM caballeros GROUP BY pais;
 SELECT rango, COUNT(*) AS total FROM caballeros GROUP BY rango;
@@ -153,10 +153,10 @@ SELECT CONCAT('h', 'o', 'l','a');
 SELECT CONCAT_WS('-','hola','mundo','desde','SQL');
 
 
-# ---------------------------------------------
-# Indices
-# Los indices son  una estructura que se crea en una o mas columnas  de una tabla para acelerar las consultas
-# Demaciados indices pueden afectar el rendmiento
+-- ---------------------------------------------
+-- Indices
+-- Los indices son  una estructura que se crea en una o mas columnas  de una tabla para acelerar las consultas
+-- Demaciados indices pueden afectar el rendmiento
 
 -- Ver los indices de una tabla
 SHOW INDEX FROM caballeros;
